@@ -1,0 +1,14 @@
+dist
+.DS_Store
+node_modules
+temp
+*.log
+.idea
+.vscode
+.eslintcache
+*.tsbuildinfo
+*.tgz
+docs
+/test-results/
+/playwright-report/
+/playwright/.cache/

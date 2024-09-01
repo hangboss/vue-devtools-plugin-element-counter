@@ -1,0 +1,25 @@
+{
+  "name": "ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "serve:shell": "serve public/devtools-shell --listen 50708",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "^3.4.35",
+    "ui-vue2": "workspace:*"
+  },
+  "devDependencies": {
+    "vue-devtools-plugin-element-counter": "workspace:*",
+    "@vitejs/plugin-vue": "^5.1.2",
+    "@vitejs/plugin-vue-jsx": "^4.0.0",
+    "serve": "^14.2.3",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.0",
+    "vue-tsc": "^2.0.29"
+  }
+}

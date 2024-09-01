@@ -1,0 +1,11 @@
+{
+  "name": "devtools-shell",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "serve:shell": "serve ./ --listen 50709"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,5 @@
+packages:
+  - './'
+  - 'e2e/fixtures/ui'
+  - 'e2e/fixtures/ui-vue2'
+  - 'e2e/fixtures/devtools-shell'

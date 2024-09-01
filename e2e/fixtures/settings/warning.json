@@ -1,0 +1,14 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "http://localhost:3000",
+      "localStorage": [
+        {
+          "name": "vue-devtools-6.0.0-alpha.1:shared-data:pluginSettings",
+          "value": "{\"vue-devtools-plugin-element-counter\":{\"limitForRoot\":\"30\",\"limitForComponent\":\"5\"}}"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "name": "vue-devtools-plugin-element-counter",
+  "version": "1.0.0",
+  "description": "A Vue Devtools plugin to count the number of elements in Vue Components",
+  "main": "dist/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "dev": "pnpm run dev:esm & pnpm run demo",
+    "dev:esm": "tsup ./src/index.ts --format esm --clean --dts --watch",
+    "demo": "pnpm dev-shell & pnpm dev-ui:3",
+    "dev-ui:2": "vue-demi-switch 2 && pnpm -F ui-vue2 dev",
+    "dev-ui:3": "vue-demi-switch 3 vue3 && pnpm -F ui dev",
+    "dev-shell": "pnpm -F devtools-shell serve:shell",
+    "build": "pnpm run build:esm",
+    "build:esm": "tsup ./src/index.ts --format esm --clean --dts",
+    "test:2": "cross-env CUSTOM_VUE_VERSION=2 playwright test",
+    "test:3": "playwright test",
+    "test-debug:2": "cross-env CUSTOM_VUE_VERSION=2 playwright test --ui",
+    "test-debug:3": "playwright test --ui"
+  },
+  "keywords": [
+    "vue",
+    "vue devtools",
+    "vue devtools plugin",
+    "element counter"
+  ],
+  "author": "hangboss",
+  "license": "MIT",
+  "peerDependencies": {
+    "@vue/composition-api": "^1.0.0-rc.1",
+    "vue": "^2.0.0 || >=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "@vue/composition-api": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@playwright/experimental-ct-vue2": "1.46.0",
+    "@playwright/test": "1.46.0",
+    "@types/lodash.merge": "^4.6.9",
+    "@types/node": "^22.2.0",
+    "cross-env": "^7.0.3",
+    "prettier": "^3.3.3",
+    "serve": "^14.2.3",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vue": "^2.7.0",
+    "vue3": "npm:vue@3"
+  },
+  "dependencies": {
+    "@vue/devtools-api": "^6.6.3",
+    "vue-demi": "^0.14.10"
+  }
+}

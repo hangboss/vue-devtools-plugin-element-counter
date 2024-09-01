@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Performance Test</title>
+  </head>
+  <body>
+    <button id="btnQuerySelectorAll">Test querySelectorAll</button>
+    <button id="btnGetElementsByTagName">Test getElementsByTagName</button>
+    <button id="btnCustomTraverseRecursively">
+      Test Custom Traverse Recursively
+    </button>
+    <button id="btnCustomTraverseIteratively">
+      Test Custom Traverse Iteratively
+    </button>
+    <div id="root"></div>
+
+    <script>
+      const root = document.getElementById('root')
+
+      const elementTypes = ['div', 'span', 'h3', 'h4', 'h5']
+
+      function createNestedElements(parent, depth, maxDepth) {
+        if (depth > maxDepth) return
+
+        const elementType =
+          elementTypes[Math.floor(Math.random() * elementTypes.length)]
+        const element = document.createElement(elementType)
+
+        element.textContent = `Element at depth ${depth}`
+
+        parent.appendChild(element)
+
+        createNestedElements(element, depth + 1, maxDepth)
+      }
+
+      for (let i = 0; i < 1000; i++) {
+        createNestedElements(root, 1, 100)
+      }
+
+      function countElementsWithQuerySelectorAll() {
+        const elements = root.querySelectorAll('*')
+        return elements.length + 1
+      }
+
+      function countElementsWithTagNames() {
+        const elements = root.getElementsByTagName('*')
+        return elements.length + 1
+      }
+
+      function countElementsRecursively() {
+        let count = 0
+        const traverse = node => {
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            count++
+          }
+          if (node.firstChild) {
+            traverse(node.firstChild)
+          }
+          if (node !== root && node.nextSibling) {
+            traverse(node.nextSibling)
+          }
+        }
+        traverse(root)
+        return count
+      }
+
+      function countElementsIteratively() {
+        let count = 0
+        const stack = [root]
+
+        while (stack.length > 0) {
+          const node = stack.pop()
+
+          if (node.nodeType === Node.ELEMENT_NODE) {
+            count++
+          }
+
+          if (node.firstChild) {
+            stack.push(node.firstChild)
+          }
+          if (node !== root && node.nextSibling) {
+            stack.push(node.nextSibling)
+          }
+        }
+
+        return count
+      }
+
+      document
+        .getElementById('btnQuerySelectorAll')
+        .addEventListener('click', () => {
+          console.time('countElementsWithQuerySelectorAll')
+          for (let i = 0; i < 100; i++) {
+            countElementsWithQuerySelectorAll()
+          }
+          console.log(
+            `Total elements (countElementsWithQuerySelectorAll): ${countElementsWithQuerySelectorAll()}`,
+          )
+          console.timeEnd('countElementsWithQuerySelectorAll')
+        })
+
+      document
+        .getElementById('btnGetElementsByTagName')
+        .addEventListener('click', () => {
+          console.time('countElementsWithTagNames')
+          for (let i = 0; i < 100; i++) {
+            countElementsWithTagNames()
+          }
+          console.log(
+            `Total elements (countElementsWithTagNames): ${countElementsWithTagNames()}`,
+          )
+          console.timeEnd('countElementsWithTagNames')
+        })
+
+      document
+        .getElementById('btnCustomTraverseRecursively')
+        .addEventListener('click', () => {
+          console.time('countElementsRecursively')
+          for (let i = 0; i < 100; i++) {
+            countElementsRecursively()
+          }
+          console.log(
+            `Total elements (countElementsRecursively): ${countElementsRecursively()}`,
+          )
+          console.timeEnd('countElementsRecursively')
+        })
+
+      document
+        .getElementById('btnCustomTraverseIteratively')
+        .addEventListener('click', () => {
+          console.time('countElementsIteratively')
+          for (let i = 0; i < 100; i++) {
+            countElementsIteratively()
+          }
+          console.log(
+            `Total elements (countElementsIteratively): ${countElementsIteratively()}`,
+          )
+          console.timeEnd('countElementsIteratively')
+        })
+    </script>
+  </body>
+</html>
