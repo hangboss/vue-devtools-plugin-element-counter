@@ -21,7 +21,7 @@ export default defineConfig({
   reporter: 'html',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    headless: false,
+    headless: true,
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
@@ -38,7 +38,7 @@ export default defineConfig({
 
   webServer: [
     {
-      command: 'npm run dev-shell',
+      command: 'pnpm dev-shell',
       port: 50709,
       timeout: 120 * 1000,
       stdout: 'ignore',
@@ -47,7 +47,7 @@ export default defineConfig({
     },
     process.env.CUSTOM_VUE_VERSION === '2'
       ? {
-          command: 'npm run dev-ui:2',
+          command: 'pnpm dev-ui:2',
           port: 3001,
           timeout: 120 * 1000,
           stdout: 'ignore',
