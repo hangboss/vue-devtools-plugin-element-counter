@@ -30,6 +30,11 @@
   ],
   "author": "hangboss",
   "license": "MIT",
+  "homepage": "https://github.com/hangboss/vue-devtools-plugin-element-counter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hangboss/vue-devtools-plugin-element-counter"
+  },
   "peerDependencies": {
     "@vue/composition-api": "^1.0.0-rc.1",
     "vue": "^2.0.0 || >=3.0.0"
