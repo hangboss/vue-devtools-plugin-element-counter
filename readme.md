@@ -1,5 +1,9 @@
 <h1 align="center">vue-devtools-plugin-element-counter</h1>
 
+<p align="center">
+<a href="https://github.com/hangboss/vue-devtools-plugin-element-counter/actions/workflows/test.yaml" target="__blank"><img alt="Playwright Tests" src="https://github.com/hangboss/vue-devtools-plugin-element-counter/actions/workflows/test.yaml/badge.svg"></a>
+</p>
+
 A Vue Devtools plugin that counts and displays how many element nodes are rendered in a Vue component, helping you discover unnecessary element rendering or excessive element rendering that leads to performance issues.
 
 ![demo](./assets/demo.png)
@@ -80,4 +84,4 @@ Run`pnpm install && pnpm dev`, and open `http://localhost:3000/`
 On the basis of the development steps:
 
 - Install chromium: `npx playwright install chromium`
-- Run tests: `npm test:3` or debug tests: `npm test-debug:3`
+- Run tests: `pnpm test:3` or debug tests: `pnpm test-debug:3`
